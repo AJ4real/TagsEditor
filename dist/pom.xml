@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>me.aj4real</groupId>
-        <artifactId>tagseditor-parent</artifactId>
+        <groupId>me.aj4real.tagseditor</groupId>
+        <artifactId>parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tagseditor-dist</artifactId>
+    <artifactId>dist</artifactId>
 
     <dependencies>
         <dependency>
@@ -20,38 +20,38 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>plugin</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor-v1_17_R1</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>v1_17_R1</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor-v1_18_R1</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>v1_18_R1</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor-v1_18_R2</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>v1_18_R2</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor-denizenimpl</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>denizenimpl</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>me.aj4real</groupId>
-            <artifactId>tagseditor-paper</artifactId>
+            <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>paper</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
