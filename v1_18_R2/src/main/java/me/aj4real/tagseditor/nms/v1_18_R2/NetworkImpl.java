@@ -24,14 +24,14 @@ public class NetworkImpl implements Network {
 
     public void onEnable(Plugin plugin) {
         try {
-            Client.sender = (BiConsumer<Connection, Packet>) ((c, p) -> c.send(p));
+            Client.sender = (BiConsumer<Connection, Packet>) (Connection::send);
 
             String findChannelsField = List.class.getCanonicalName() + "<" + ChannelFuture.class.getCanonicalName() + ">";
             Field channelsField = Arrays.stream(ServerConnectionListener.class.getDeclaredFields()).filter((f) -> f.getGenericType().getTypeName().equalsIgnoreCase(findChannelsField)).findFirst().get();
             channelsField.setAccessible(true);
             ServerConnectionListener con = ((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection();
             List<ChannelFuture> futures = (List<ChannelFuture>) channelsField.get(con);
-            synchronized (con) {
+            synchronized (((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection()) {
                 TheUnsafe.get().putObject(
                         con,
                         TheUnsafe.get().objectFieldOffset(channelsField),
@@ -42,7 +42,7 @@ public class NetworkImpl implements Network {
             String findConnectionsField = List.class.getCanonicalName() + "<" + Connection.class.getCanonicalName() + ">";
             Field connectionsField = Arrays.stream(ServerConnectionListener.class.getDeclaredFields()).filter((f) -> f.getGenericType().getTypeName().equalsIgnoreCase(findConnectionsField)).findAny().get();
             connectionsField.setAccessible(true);
-            synchronized (con) {
+            synchronized (((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection()) {
                 List<Connection> connections = con.getConnections();
                 TheUnsafe.get().putObject(
                         con,
@@ -56,7 +56,7 @@ public class NetworkImpl implements Network {
             serverPlayersField.setAccessible(true);
             PlayerList playerList = ((CraftServer)Bukkit.getServer()).getHandle();
             List<ServerPlayer> players = playerList.players;
-            synchronized (playerList) {
+            synchronized (((CraftServer)Bukkit.getServer()).getHandle()) {
                 TheUnsafe.get().putObject(
                         playerList,
                         TheUnsafe.get().objectFieldOffset(serverPlayersField),

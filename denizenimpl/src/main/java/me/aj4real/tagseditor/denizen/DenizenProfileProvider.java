@@ -17,7 +17,7 @@ public class DenizenProfileProvider implements TagsProfile.Provider {
     }
     @Override
     public List<TagsProfile> getAllProfiles() {
-        return TagsProfileScriptContainer.containers.values().stream().map((v) -> v.getProfile()).collect(Collectors.toList());
+        return TagsProfileScriptContainer.containers.values().stream().map(TagsProfileScriptContainer::getProfile).collect(Collectors.toList());
     }
 
     @Override

@@ -40,15 +40,12 @@ import java.util.function.Function;
 
 public class NMSImpl implements NMS {
 
-    private static RegistryAccess access = ((CraftServer) Bukkit.getServer()).getHandle().getServer().registryAccess();
-    private static Registry<net.minecraft.world.level.biome.Biome> biomes = access.registryOrThrow(Registry.BIOME_REGISTRY);
+    private static final RegistryAccess access = ((CraftServer) Bukkit.getServer()).getHandle().getServer().registryAccess();
+    private static final Registry<net.minecraft.world.level.biome.Biome> biomes = access.registryOrThrow(Registry.BIOME_REGISTRY);
     private static final Map<Integer, EntityType> entityIds = new HashMap<>();
 
-
     public void onEnable(Plugin plugin) {
-
         for (EntityType t : EntityType.values()) {
-
             if (t == EntityType.UNKNOWN) continue;
             Registry<net.minecraft.world.entity.EntityType<?>> r = access.registryOrThrow(Registry.ENTITY_TYPE_REGISTRY);
             int id = r.getId(r.get(CraftNamespacedKey.toMinecraft(t.getKey())));

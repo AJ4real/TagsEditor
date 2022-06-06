@@ -4,6 +4,7 @@
 
 package me.aj4real.tagseditor;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
@@ -40,6 +41,7 @@ public class ConfigLoader implements TagsProfile.Provider, Loader {
         }
         int size = getAllProfiles().size();
         plugin.getLogger().log(Level.INFO, "Loaded " + size + " profile" + (size > 1 ? "s" : "") + ".");
+        Bukkit.getOnlinePlayers().forEach(Main.playerHelper::resendPacket);
     }
 
     @Override

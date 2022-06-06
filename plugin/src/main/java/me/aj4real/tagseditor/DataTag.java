@@ -4,10 +4,7 @@
 
 package me.aj4real.tagseditor;
 
-import org.bukkit.*;
-import org.bukkit.block.Biome;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 

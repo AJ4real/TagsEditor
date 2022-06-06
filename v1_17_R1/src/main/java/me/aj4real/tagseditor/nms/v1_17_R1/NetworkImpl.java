@@ -25,7 +25,7 @@ public class NetworkImpl implements Network {
     public void onEnable(Plugin plugin) {
 
         try {
-            Client.sender = (BiConsumer<Connection, Packet>) ((c, p) -> c.send(p));
+            Client.sender = (BiConsumer<Connection, Packet>) (Connection::send);
 
             String findChannelsField = List.class.getCanonicalName() + "<" + ChannelFuture.class.getCanonicalName() + ">";
             Field channelsField = Arrays.stream(ServerConnectionListener.class.getDeclaredFields()).filter((f) -> f.getGenericType().getTypeName().equalsIgnoreCase(findChannelsField)).findFirst().get();
@@ -57,7 +57,7 @@ public class NetworkImpl implements Network {
             serverPlayersField.setAccessible(true);
             PlayerList playerList = ((CraftServer)Bukkit.getServer()).getHandle();
             List<ServerPlayer> players = playerList.players;
-            synchronized (playerList) {
+            synchronized (((CraftServer)Bukkit.getServer()).getHandle()) {
                 TheUnsafe.get().putObject(
                         playerList,
                         TheUnsafe.get().objectFieldOffset(serverPlayersField),

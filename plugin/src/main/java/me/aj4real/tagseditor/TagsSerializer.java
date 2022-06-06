@@ -9,17 +9,14 @@ import org.bukkit.block.Biome;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Zoglin;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.logging.Level;
 
 public class TagsSerializer {
     private final Map<DataTag, Map<BlockData, Boolean>> blocks;
@@ -76,17 +73,17 @@ public class TagsSerializer {
             }
             else if(category.equalsIgnoreCase("entity_type")) {
                 getTag = DataTag.EntityType::fromString;
-                fromString = (s) -> EntityType.valueOf(s);
+                fromString = EntityType::valueOf;
                 add = (t,d) -> entityTypes.put(t, (Map<EntityType, Boolean>) d);
             }
             else if(category.equalsIgnoreCase("worldgen/biome")) {
                 getTag = DataTag.Biome::fromString;
                 add = (t,d) -> biomes.put(t, (Map<Biome, Boolean>) d);
-                fromString = (s) -> Biome.valueOf(s);
+                fromString = Biome::valueOf;
             }
             else if(category.equalsIgnoreCase("fluid")) {
                 getTag = DataTag.Fluid::fromString;
-                fromString = (s) -> Fluid.valueOf(s);
+                fromString = Fluid::valueOf;
                 add = (t,d) -> fluids.put(t, (Map<Fluid, Boolean>) d);
             }
             else if(category.equalsIgnoreCase("game_event")) {
@@ -132,8 +129,7 @@ public class TagsSerializer {
                 }
             }
         }
-        TagsSerializer serializer = new TagsSerializer(blocks, items, entityTypes, biomes, fluids, gameEvents);
-        return serializer;
+        return new TagsSerializer(blocks, items, entityTypes, biomes, fluids, gameEvents);
     }
     public void write(ConfigurationSection config) {
         BiConsumer runner = (o1,o2) -> {

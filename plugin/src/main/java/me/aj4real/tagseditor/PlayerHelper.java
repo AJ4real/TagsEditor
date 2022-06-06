@@ -25,8 +25,8 @@ import java.util.logging.Level;
 
 public class PlayerHelper implements Loader {
     private static Plugin plugin;
-    private static Map<String, TagsProfile.Provider> providers = new HashMap<>();
-    private static Map<Player, PlayerHolder> players = new HashMap<>();
+    private static final Map<String, TagsProfile.Provider> providers = new HashMap<>();
+    private static final Map<Player, PlayerHolder> players = new HashMap<>();
     // /ex tags profile:TEST_TAGS_PROFILE3 persistent
 
     public void onEnable(Plugin plugin) {
@@ -50,6 +50,9 @@ public class PlayerHelper implements Loader {
     }
     public void setActiveProfile(Player player, TagsProfile profile, boolean persistent) {
         players.get(player).setActiveProfile(profile, persistent);
+    }
+    public void resendPacket(Player player) {
+        players.get(player).resendPacket();
     }
     public void addProvider(TagsProfile.Provider provider) {
         providers.put(provider.getName(), provider);
@@ -118,13 +121,13 @@ public class PlayerHelper implements Loader {
             TagsProfile.Provider provider = providers.get(strProvider);
             if(provider == null) {
                 plugin.getLogger().log(Level.SEVERE, "Profile Provider " + strProvider + " was not found.");
-                f.delete();
+//                f.delete();
                 return;
             }
             TagsProfile profile = provider.getProfile(strProfile);
             if(profile == null) {
                 plugin.getLogger().log(Level.SEVERE, "Attempted to assign player '" + player.getDisplayName() + "' profile " + strProfile + " from " + strProvider + ", but no such profile exists.");
-                f.delete();
+//                f.delete();
                 return;
             }
             boolean persistent = buffer.readBoolean();

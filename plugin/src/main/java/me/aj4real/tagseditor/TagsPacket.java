@@ -4,7 +4,6 @@
 
 package me.aj4real.tagseditor;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Fluid;
 import org.bukkit.GameEvent;
 import org.bukkit.block.Biome;

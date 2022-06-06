@@ -31,26 +31,17 @@ import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.Function;
 
 public class NMSImpl implements NMS {
 
-    private static RegistryAccess access = ((CraftServer) Bukkit.getServer()).getHandle().getServer().registryAccess();
-    private static Registry<Biome> biomes = access.registryOrThrow(Registry.BIOME_REGISTRY);
+    private static final RegistryAccess access = ((CraftServer) Bukkit.getServer()).getHandle().getServer().registryAccess();
+    private static final Registry<Biome> biomes = access.registryOrThrow(Registry.BIOME_REGISTRY);
     private static final Map<Integer, EntityType> entityIds = new HashMap<>();
-    private static Field frozen;
-    private static Method method;
 
     public void onEnable(Plugin plugin) {
-        method = Arrays.stream(TagCollection.class.getDeclaredMethods()).filter((m) ->
-                m.getReturnType() == TagCollection.NetworkPayload.class
-        ).findFirst().get();
-        method.setAccessible(true);
-
         for (EntityType t : EntityType.values()) {
-
             if (t == EntityType.UNKNOWN) continue;
             Registry<net.minecraft.world.entity.EntityType<?>> r = access.registryOrThrow(Registry.ENTITY_TYPE_REGISTRY);
             int id = r.getId(r.get(CraftNamespacedKey.toMinecraft(t.getKey())));

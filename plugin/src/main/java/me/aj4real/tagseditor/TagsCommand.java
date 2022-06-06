@@ -101,14 +101,14 @@ public class TagsCommand implements CommandExecutor, TabCompleter {
                 case "set": {
                     if(args.length == 2)
                         return Bukkit.getOnlinePlayers().stream()
-                                .filter((p) -> p.getDisplayName().startsWith(args[1]))
-                                .map((p) -> p.getDisplayName())
+                                .map(Player::getDisplayName)
+                                .filter(displayName -> displayName.startsWith(args[1]))
                                 .collect(Collectors.toList());
                     else {
                         if(args.length == 3){
                             List<String> ret = Main.config.getAllProfiles().stream()
-                                    .filter((p) -> p.getName().startsWith(args[2]))
-                                    .map((p) -> p.getName())
+                                    .map(TagsProfile::getName)
+                                    .filter(name -> name.startsWith(args[2]))
                                     .collect(Collectors.toList());
                             ret.add("clear");
                             return ret;
