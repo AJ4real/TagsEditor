@@ -17,3 +17,4 @@ worldgen/biome:
     SNOWY_BEACH: false
     jungle: true
 ```
+All Block tags from https://minecraft.fandom.com/wiki/Tag are confirmed working.
