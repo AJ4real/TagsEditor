@@ -1,0 +1,14 @@
+name: TagsEditor
+main: me.aj4real.tagseditor.Dist
+version: 1.0
+author: AJ_4real
+api-version: 1.17
+softdepend:
+  - Denizen
+commands:
+  tags:
+    permission: tagseditor.command.admin
+    description: Primary command for assigning and modifying tag profiles
+    usage: /tags list (page number) | set (player) (profile) [persistent]
+    aliases:
+      - tagseditor

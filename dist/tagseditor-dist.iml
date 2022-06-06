@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="minecraft" name="Minecraft">
+      <configuration>
+        <autoDetectTypes>
+          <platformType>SPIGOT</platformType>
+          <platformType>MCP</platformType>
+        </autoDetectTypes>
+      </configuration>
+    </facet>
+  </component>
+  <component name="McpModuleSettings">
+    <option name="srgType" value="SRG" />
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/${project.build.directory}/classes" />
+    <output-test url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.basedir}/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="tagseditor" />
+    <orderEntry type="module" module-name="tagseditor-v1_17_R1" />
+    <orderEntry type="library" name="Maven: me.aj4real:tagseditor-v1_18_R1:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: me.aj4real:tagseditor-v1_18_R2:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: me.aj4real:tagseditor-paper:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: ${project.parent.groupId}:${artifactId}:${project.parent.version}" level="project" />
+    <orderEntry type="library" name="Maven: ${project.parent.groupId}:tagseditor-v1_17_R1:${project.parent.version}" level="project" />
+    <orderEntry type="library" name="Maven: ${project.parent.groupId}:tagseditor-v1_18_R1:${project.parent.version}" level="project" />
+    <orderEntry type="library" name="Maven: ${project.parent.groupId}:tagseditor-v1_18_R2:${project.parent.version}" level="project" />
+    <orderEntry type="library" name="Maven: ${project.parent.groupId}:tagseditor-paper:${project.parent.version}" level="project" />
+  </component>
+</module>
