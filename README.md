@@ -1,4 +1,5 @@
 # TagsEditor
+https://www.spigotmc.org/resources/tagseditor.102468/
 Example Profile: `plugins/TagsEditor/profiles/example.yml`
 ```
 block:
