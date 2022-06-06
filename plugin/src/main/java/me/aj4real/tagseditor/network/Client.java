@@ -58,7 +58,6 @@ public class Client<C> extends ChannelDuplexHandler {
         sender.accept(connection, packet);
     }
     public void setPlayer(Player player) {
-        Bukkit.getConsoleSender().sendMessage("a");
         this.player = player;
         fromPlayer.put(player, this);
         synchronized (this) {
@@ -76,10 +75,7 @@ public class Client<C> extends ChannelDuplexHandler {
         fromConnection.put(connection, this);
     }
     private <T> T handle(T msg) {
-        if(msg == null) {
-            System.out.println("null packet???");
-            return null;
-        }
+        if(msg == null) return null;
         Packets.Handler<T> handler = Packets.handlers.get(msg.getClass());
         if(handler != null) {
             try {
