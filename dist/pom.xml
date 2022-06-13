@@ -45,6 +45,12 @@
         </dependency>
         <dependency>
             <groupId>me.aj4real.tagseditor</groupId>
+            <artifactId>v1_19_R1</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.aj4real.tagseditor</groupId>
             <artifactId>denizenimpl</artifactId>
             <version>${project.parent.version}</version>
             <scope>compile</scope>

@@ -45,6 +45,7 @@ public class TagsPacket {
         Map<DataTag, Map<GameEvent, Boolean>> gameEvents = new HashMap<>();
         for (Object key : Main.nms.getTagsFromPacket(original).keySet()) {
             Function<String, DataTag> c = Main.nms.funcFromRegistry(key);
+            if(c == null) continue;
             BiConsumer<Object, Object> runner = (k,v) -> {
                 DataTag tag = c.apply(Main.nms.pathFromResourceLocation(k));
                 Object registry = tag.getRegistry(); // ResourceKey<Registry>
