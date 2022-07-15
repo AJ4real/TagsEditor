@@ -84,7 +84,7 @@
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.1.0</version>
         <configuration>
-          <finalName>tagseditor-${BUILD_VERSION}-${BUILD_NUMBER}</finalName>
+          <finalName>tagseditor</finalName>
           <outputDirectory>../target</outputDirectory>
         </configuration>
       </plugin>
