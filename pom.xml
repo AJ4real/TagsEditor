@@ -16,10 +16,14 @@
 
     <modules>
         <module>plugin</module>
-        <module>v1_17_R1</module>
-        <module>v1_18_R1</module>
-        <module>v1_18_R2</module>
-        <module>v1_19_R1</module>
+        <module>v1_17</module>
+        <module>v1_17_1</module>
+        <module>v1_18</module>
+        <module>v1_18_1</module>
+        <module>v1_18_2</module>
+        <module>v1_19</module>
+        <module>v1_19_1</module>
+        <module>v1_19_2</module>
         <module>paper</module>
         <module>dist</module>
         <module>denizenimpl</module>
