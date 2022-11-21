@@ -33,9 +33,9 @@ public class Dist extends JavaPlugin {
         try {
             getLogger().log(Level.INFO, "Attempting to load NMS interface for " + strVer);
             Version ver = Version.valueOf(strVer.replace('.', '_'));
-            NMS nms = ver.nms.newInstance();
+            NMS nms = ver.nms.getConstructor().newInstance();
             nms.onEnable(this);
-            Network network = ver.network.newInstance();
+            Network network = ver.network.getConstructor().newInstance();
             network.onEnable(this);
             Bukkit.getPluginManager().registerEvents(new Listener() {
                 @EventHandler

@@ -31,42 +31,33 @@ public class NetworkImpl implements Network {
             channelsField.setAccessible(true);
             ServerConnectionListener con = ((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection();
             List<ChannelFuture> futures = (List<ChannelFuture>) channelsField.get(con);
-            synchronized (((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection()) {
-                TheUnsafe.get().putObject(
-                        con,
-                        TheUnsafe.get().objectFieldOffset(channelsField),
-                        new ProxyList<>(futures, Packets::inject, (ch) -> {})
-                );
-            }
-
+            TheUnsafe.get().putObject(
+                    con,
+                    TheUnsafe.get().objectFieldOffset(channelsField),
+                    new ProxyList<>(futures, Packets::inject, (ch) -> {})
+            );
             String findConnectionsField = List.class.getCanonicalName() + "<" + Connection.class.getCanonicalName() + ">";
             Field connectionsField = Arrays.stream(ServerConnectionListener.class.getDeclaredFields()).filter((f) -> f.getGenericType().getTypeName().equalsIgnoreCase(findConnectionsField)).findAny().get();
             connectionsField.setAccessible(true);
-            synchronized (((CraftServer) Bukkit.getServer()).getHandle().getServer().getConnection()) {
-                List<Connection> connections = con.getConnections();
-                TheUnsafe.get().putObject(
-                        con,
-                        TheUnsafe.get().objectFieldOffset(connectionsField),
-                        new ProxyList<>(connections, (c) -> Client.getFromChannel(c.channel).setConnection(c), (c) -> {})
-                );
-            }
-
+            List<Connection> connections = con.getConnections();
+            TheUnsafe.get().putObject(
+                    con,
+                    TheUnsafe.get().objectFieldOffset(connectionsField),
+                    new ProxyList<>(connections, (c) -> Client.getFromChannel(c.channel).setConnection(c), (c) -> {})
+            );
             String findServerPlayersField = List.class.getCanonicalName() + "<" + ServerPlayer.class.getCanonicalName() + ">";
             Field serverPlayersField = Arrays.stream(PlayerList.class.getDeclaredFields()).filter(f -> f.getGenericType().getTypeName().equalsIgnoreCase(findServerPlayersField)).findAny().get();
             serverPlayersField.setAccessible(true);
             PlayerList playerList = ((CraftServer)Bukkit.getServer()).getHandle();
             List<ServerPlayer> players = playerList.players;
-            synchronized (((CraftServer)Bukkit.getServer()).getHandle()) {
-                TheUnsafe.get().putObject(
-                        playerList,
-                        TheUnsafe.get().objectFieldOffset(serverPlayersField),
-                        new ProxyList<>(players,
-                                (p) -> Client.getFromConnection(p.connection.connection).setPlayer(p.getBukkitEntity().getPlayer()),
-                                (p) -> {
-                                })
-                );
-
-            }
+            TheUnsafe.get().putObject(
+                    playerList,
+                    TheUnsafe.get().objectFieldOffset(serverPlayersField),
+                    new ProxyList<>(players,
+                            (p) -> Client.getFromConnection(p.connection.connection).setPlayer(p.getBukkitEntity().getPlayer()),
+                            (p) -> {
+                            })
+            );
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             Bukkit.getPluginManager().disablePlugin(plugin);

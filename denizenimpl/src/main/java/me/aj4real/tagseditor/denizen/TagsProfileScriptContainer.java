@@ -57,7 +57,7 @@ public class TagsProfileScriptContainer extends ScriptContainer {
         }
         TagsSerializer serializer = TagsSerializer.read(
                 org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(
-                        new StringReader(configurationSection.saveToString(true))), new TagsSerializer.Context(TagsProfileScriptContainer.class, scriptContainerName, Debug::echoError));
+                        new StringReader(configurationSection.saveToString(true))), new TagsSerializer.Context(scriptContainerName, Debug::echoError));
         containers.put(scriptContainerName, this);
         this.profile = new TagsProfile(provider, scriptContainerName, serializer);
     }

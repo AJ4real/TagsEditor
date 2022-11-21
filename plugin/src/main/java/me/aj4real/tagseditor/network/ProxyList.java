@@ -7,7 +7,7 @@ package me.aj4real.tagseditor.network;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class ProxyList<T> implements List<T>, RandomAccess, Cloneable, java.io.Serializable {
+public class ProxyList<T> implements List<T>, RandomAccess, java.io.Serializable {
     private final List<T> delegate;
     private final Consumer<T> add, remove;
     public ProxyList(List<T> delegate, Consumer<T> add, Consumer<T> remove) {

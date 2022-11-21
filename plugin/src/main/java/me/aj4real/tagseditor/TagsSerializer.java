@@ -149,11 +149,9 @@ public class TagsSerializer {
         gameEvents.forEach(runner);
     }
     public static class Context {
-        private final Class caller; //TODO future
         private final String provider;
         private final Consumer<String> logger;
-        public Context(Class caller, String provider, Consumer<String> logger) {
-            this.caller = caller;
+        public Context(String provider, Consumer<String> logger) {
             this.provider = provider;
             this.logger = logger;
         }

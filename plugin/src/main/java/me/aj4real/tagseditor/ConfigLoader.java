@@ -35,7 +35,7 @@ public class ConfigLoader implements TagsProfile.Provider, Loader {
             if(!p.getName().endsWith(".yml")) continue;
             String name = p.getName().replace(".yml", "");
             YamlConfiguration config = YamlConfiguration.loadConfiguration(p);
-            TagsSerializer serializer = TagsSerializer.read(config, new TagsSerializer.Context(this.getClass(), p.getName(), logger));
+            TagsSerializer serializer = TagsSerializer.read(config, new TagsSerializer.Context(p.getName(), logger));
             TagsProfile profile = new TagsProfile(this, name, serializer);
             profiles.put(name, profile);
         }
