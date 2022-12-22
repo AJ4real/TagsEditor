@@ -64,7 +64,8 @@ public class Dist extends JavaPlugin {
         v1_18_2(me.aj4real.tagseditor.nms.v1_18_2.NMSImpl.class, me.aj4real.tagseditor.nms.v1_18_2.NetworkImpl.class),
         v1_19(me.aj4real.tagseditor.nms.v1_19.NMSImpl.class, me.aj4real.tagseditor.nms.v1_19.NetworkImpl.class),
         v1_19_1(me.aj4real.tagseditor.nms.v1_19_1.NMSImpl.class, me.aj4real.tagseditor.nms.v1_19_1.NetworkImpl.class),
-        v1_19_2(me.aj4real.tagseditor.nms.v1_19_2.NMSImpl.class, me.aj4real.tagseditor.nms.v1_19_2.NetworkImpl.class);
+        v1_19_2(me.aj4real.tagseditor.nms.v1_19_2.NMSImpl.class, me.aj4real.tagseditor.nms.v1_19_2.NetworkImpl.class),
+        v1_19_3(me.aj4real.tagseditor.nms.v1_19_3.NMSImpl.class, me.aj4real.tagseditor.nms.v1_19_3.NetworkImpl.class);
         private final Class<? extends NMS> nms;
         private final Class<? extends Network> network;
         Version(Class<? extends NMS> nms, Class<? extends Network> network) {
